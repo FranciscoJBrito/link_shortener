@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    restart: on-failure:3
+    image: postgres:13.2
+    env_file:
+      - .env.postgresql
+  link_shortener:
+    restart: on-failure:3
+    build: 
+      context: .
+    volumes:
+      - ".:/app"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
