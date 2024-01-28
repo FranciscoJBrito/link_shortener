@@ -29,6 +29,16 @@ RSpec.describe Shortener do
             second_code = shortener.lookup_code
 
             expect(first_code).to eq(second_code)
+      end
+
+      it "generates a Link record with a unique lookup code" do
+            url = "https://rubygems.org/gems/rspec-rails/versions/6.1.1"
+            shortener = Shortener.new(url)
+            link = shortener.generate_short_link
+            expect(link.valid?).to be(true)
+
+            link_2 = shortener.generate_short_link
+            expect(link_2.valid?).to be(true)
       end 
 
 end
