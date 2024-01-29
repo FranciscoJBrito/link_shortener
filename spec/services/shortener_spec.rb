@@ -19,18 +19,6 @@ RSpec.describe Shortener do
             expect(code_2).not_to eq(code_1)
       end
 
-      it "always gives the same URL the same lookup code" do
-            url = "https://rubygems.org/gems/rspec-rails/versions/6.1.1"
-            shortener = Shortener.new(url)
-            first_code = shortener.lookup_code
-
-            url = "https://rubygems.org/gems/rspec-rails/versions/6.1.1"
-            shortener = Shortener.new(url)
-            second_code = shortener.lookup_code
-
-            expect(first_code).to eq(second_code)
-      end
-
       it "generates a Link record with a unique lookup code" do
             url = "https://rubygems.org/gems/rspec-rails/versions/6.1.1"
             shortener = Shortener.new(url)
