@@ -6,7 +6,7 @@ class LinksController < ApplicationController
 
             respond_to do |format|
                   format.html { redirect_to root_path }
-                  format.js   # Esto buscará el archivo create.js.erb en app/views/links/
+                  format.js  { render :create } # Esto buscará el archivo create.js.erb en app/views/links/
             end
       end
 
