@@ -6,21 +6,29 @@ RSpec.describe Link, type: :model do
           original_url: "https://rubygems.org/gems/rspec-rails/versions/6.1.1",
           lookup_code: "1234567"
     )
-    expect(link.valid?).to be(true)  
+    expect(link.valid?).to be(true)
+  end
+
+  it "is invalid if the URL is not formatted properly" do
+    link = Link.new(
+          original_url: "knasndoiasplan",
+          lookup_code: "1234567"
+    )
+    expect(link.valid?).to be(false)
   end
 
   it "is invalid if doesn't have a lookup code" do
     link = Link.new(
           original_url: "https://rubygems.org/gems/rspec-rails/versions/6.1.1"
     )
-    expect(link.valid?).to be(false)  
+    expect(link.valid?).to be(false)
   end
 
   it "is invalid if doesn't have an original URL" do
     link = Link.new(
           lookup_code: "1234567"
     )
-    expect(link.valid?).to be(false)  
+    expect(link.valid?).to be(false)
   end
 
   it "is invalid if the lookup code already exists" do

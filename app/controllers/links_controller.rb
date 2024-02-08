@@ -3,10 +3,10 @@ class LinksController < ApplicationController
       def create
             shortener = Shortener.new(link_params[:original_url])
             @link = shortener.generate_short_link
-            respond_to do |format|
-                  format.html { redirect_to root_path }
-                  format.js
-            end
+            #respond_to do |format|
+            #      format.html { redirect_to root_path }
+            #      format.js
+            #end
       end
 
       private
