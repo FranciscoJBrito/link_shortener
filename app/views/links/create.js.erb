@@ -1,2 +1,8 @@
+// create_success.js.erb
+$("#short-link").html("<%= j(render 'link_partial', link: @link) %>");
+
 let lookupCode = "<%= @link.lookup_code %>";
 console.log(lookupCode)
+
+let element = document.getElementById('short-link');
+element.innerHTML = lookupCode;
